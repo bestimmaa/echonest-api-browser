@@ -8,18 +8,28 @@ $(function () {
 function getExampleJSONP() {
     jQuery.ajax({
         dataType: "jsonp",
-        url: "http://developer.echonest.com/api/v4/song/search?api_key=QTJ926WQJ92B089WB&format=jsonp",
+        url: "http://developer.echonest.com/api/v4/song/search?api_key=FILDTEOIK2HBORODV&format=jsonp",
         data: {"results": 1, "artist": "Radiohead", "title": "Karma Police"},
         success: function (response) {
             console.log(response);
 
             $(".CSSTableGenerator").remove();
 
-            var data = [["Artist", "Title", "Spotify URL"], //headers
-                ["New York", "LA", "Seattle"],
-                ["Paris", "Milan", "Rome"],
-                ["Pittsburg", "Wichita", "Boise"]]
-            var cityTable = makeTable($(document.body), data);
+            var header = ["artist_id", "id", "artist_name", "title"];
+
+            var songs = response["response"]["songs"];
+            var tableRows = new Array();
+            tableRows.push(header);
+            for (i = 0; i < songs.length; ++i) {
+                var row = new Array();
+                for (var s in songs[i]) {
+                    row.push(String(songs[i][s]));
+                }
+                tableRows.push(row);
+            }
+
+            var song_results = makeTable($(document.body), tableRows);
+
         }
     });
 }
