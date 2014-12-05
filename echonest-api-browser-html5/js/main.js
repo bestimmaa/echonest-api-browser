@@ -1,28 +1,37 @@
+// Read api key from echonest_api_key file
+var api_key;
+
+
 $(function () {
     $("#search_song_button").click(function () {
         //alert('clicked!');
         getExampleJSONP();
     });
+
+    $("#slider_key").slider();
+    apiKey();
+
 });
+
 
 function getExampleJSONP() {
     jQuery.ajax({
         dataType: "jsonp",
-        url: "http://developer.echonest.com/api/v4/song/search?api_key=FILDTEOIK2HBORODV&format=jsonp",
-        data: {"results": 1, "artist": "Radiohead", "title": "Karma Police"},
+        url: "http://developer.echonest.com/api/v4/song/search?format=jsonp",
+        data: {"results": 1, "artist": "Radiohead", "title": "Karma Police", "api_key":api_key},
         success: function (response) {
             console.log(response);
 
             $(".CSSTableGenerator").remove();
 
-            var header = ["artist_id", "id", "artist_name", "title"];
+            var header = ["artist_id","id","artist_name","title"];
 
             var songs = response["response"]["songs"];
             var tableRows = new Array();
             tableRows.push(header);
-            for (i = 0; i < songs.length; ++i) {
+            for (i = 0; i < songs.length; ++i){
                 var row = new Array();
-                for (var s in songs[i]) {
+                for (var s in songs[i]){
                     row.push(String(songs[i][s]));
                 }
                 tableRows.push(row);
@@ -57,4 +66,11 @@ function appendTableColumn(table, rowData) {
     return lastRow;
 }
 
+function apiKey(){
+    jQuery.getJSON('echonest_api_key',function(data){
+        // data is an array of objects
+        console.log("Found API Key: " + data.api_key);
+        api_key = (String(data.api_key));
+    });
+}
 
