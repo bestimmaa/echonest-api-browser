@@ -3,13 +3,21 @@ var api_key;
 
 
 $(function () {
+    // read api key from file
+    apiKey();
+
     $("#search_song_button").click(function () {
         //alert('clicked!');
         getExampleJSONP();
     });
+    $("#slider_tempo").slider();
 
-    $("#slider_key").slider();
-    apiKey();
+    $("#slider_energy").slider();
+    $("#slider_danceability").slider();
+    $("#slider_acousticness").slider();
+    $("#slider_speechiness").slider();
+
+
 
 });
 

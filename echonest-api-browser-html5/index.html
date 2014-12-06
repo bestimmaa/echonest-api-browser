@@ -24,15 +24,68 @@
 
         <!-- Add your site or application content here -->
         <h1>Explore The Echo Nest Song Search API</h1>
+        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+            Key
+        </p>
+        <div class="attribute_selection.list">
+            <form action="#">
+                <fieldset>
+                    <label for="key">Select key</label>
+                    <select name="key" id="key">
+                        <option>c</option>
+                        <option>c-sharp</option>
+                        <option>d</option>
+                        <option>e-flat</option>
+                        <option>e</option>
+                        <option>f</option>
+                        <option>f-sharp</option>
+                        <option>g</option>
+                        <option>a-flat</option>
+                        <option>a</option>
+                        <option>b-flat</option>
+                        <option>b</option>
+                    </select>
+                </fieldset>
+            </form>
+        </div>
 
-        <div id="slider_key"></div>
+        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+            Mode
+        </p>
+        <div class="attribute_selection.list">
+            <form action="#">
+                <fieldset>
+                    <label for="mode">Select mode</label>
+                    <select name="mode" id="mode">
+                        <option>Major</option>
+                        <option>Minor</option>
+                    </select>
+                </fieldset>
+            </form>
+        </div>
         <div id="slider_mode"></div>
+        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+            Tempo
+        </p>
         <div id="slider_tempo"></div>
 
+        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+            Energy
+        </p>
         <div id="slider_energy"></div>
+        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+            Danceability
+        </p>
         <div id="slider_danceability"></div>
+        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+            Acousticness
+        </p>
         <div id="slider_acousticness"></div>
-        <div id="slider_valence"></div>
+        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+            Speechiness
+        </p>
+
+        <div id="slider_speechiness"></div>
 
         <button id="search_song_button">Search Songs</button>
 
