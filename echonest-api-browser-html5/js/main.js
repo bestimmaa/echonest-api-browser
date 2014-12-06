@@ -238,7 +238,7 @@ function retrieveSongs(data) {
 
             $(".CSSTableGenerator").remove();
 
-            var header = ["artist_id", "id", "artist_name", "title"];
+            var header = ["artist_name", "title", "spotify-uri"];
 
             var songs = response["response"]["songs"];
             var tableRows = new Array();
@@ -246,7 +246,17 @@ function retrieveSongs(data) {
             for (i = 0; i < songs.length; ++i) {
                 var row = new Array();
                 for (var s in songs[i]) {
-                    row.push(String(songs[i][s]));
+                    if (s == "artist_name"){
+                        row.push(String(songs[i][s]));
+                    }
+                    if (s == "title"){
+                        row.push(String(songs[i][s]));
+                    }
+                    if (s == "tracks"){
+                        var spotify_id = songs[i][s][0]["foreign_id"];
+                        spotify_id = spotify_id.replace("spotify:track:","");
+                        row.push("http://open.spotify.com/track/"+spotify_id);
+                    }
                 }
                 tableRows.push(row);
             }
@@ -271,7 +281,9 @@ function makeTable(container, data) {
     $.each(data, function (rowIndex, r) {
         var row = $("<tr/>");
         $.each(r, function (colIndex, c) {
-            row.append($("<t" + (rowIndex == 0 ? "h" : "d") + "/>").text(c));
+            if (colIndex != 2) row.append($("<t" + (rowIndex == 0 ? "h" : "d") + "/>").text(c));
+            // insert the entries from the third column as anchors
+            if (colIndex == 2 && rowIndex != 0) row.append($("<t" + (rowIndex == 0 ? "h" : "d") + "/>").append($("<a href='"+c+"'></a>").text(c)));
         });
         table.append(row);
     });
