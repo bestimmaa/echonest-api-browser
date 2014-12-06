@@ -23,6 +23,28 @@ $(function () {
 
     $("#button_search_song").click(function () {
         data = {"results": 10, "api_key": api_key};
+        if(musical_key_enabled) data["key"]=musical_key;
+        if(mode_enabled) data["mode"]=mode;
+        if(tempo_enabled){
+            data["min_tempo"] = tempo;
+            data["max_tempo"] = tempo;
+        }
+        if(energy_enabled){
+            data["min_energy"] = energy/100.0;
+            data["max_energy"] = energy/100.0;
+        }
+        if(danceability_enabled){
+            data["min_danceability"] = danceability/100.0;
+            data["max_danceability"] = danceability/100.0;
+        }
+        if(acousticness_enabled){
+            data["min_acousticness"] = acousticness/100.0;
+            data["max_acousticness"] = acousticness/100.0;
+        }
+        if(speechiness_enabled){
+            data["min_speechiness"] = speechiness/100.0;
+            data["max_speechiness"] = speechiness/100.0;
+        }
         retrieveSongs(data);
     });
 
