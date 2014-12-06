@@ -1,12 +1,12 @@
 // Read api key from echonest_api_key file
 var api_key;
-var musical_key;
-var mode;
-var tempo;
-var energy;
-var danceability;
-var acousticness;
-var speechiness;
+var musical_key = 0;
+var mode = 0;
+var tempo = 120;
+var energy = 50;
+var danceability = 50;
+var acousticness = 50;
+var speechiness = 50;
 
 
 
@@ -14,8 +14,21 @@ $(function () {
     // read api key from file and store to global variable
     apiKey();
 
-    $("#search_song_button").click(function () {
-        getExampleJSONP();
+    $("#button_search_song").click(function () {
+        data = {"results": 1, "artist": "Radiohead", "title": "Karma Police", "api_key": api_key};
+        retrieveSongs(data);
+    });
+
+    $("#key").selectmenu({
+        change: function( event, data ) {
+            musical_key = data.item.index;
+        }
+    });
+
+    $("#mode").selectmenu({
+        change: function( event, data ) {
+            mode = data.item.index;
+        }
     });
 
     $("#slider_tempo").slider({
@@ -85,6 +98,35 @@ function getExampleJSONP() {
         dataType: "jsonp",
         url: "http://developer.echonest.com/api/v4/song/search?format=jsonp",
         data: {"results": 1, "artist": "Radiohead", "title": "Karma Police", "api_key": api_key},
+        success: function (response) {
+            console.log(response);
+
+            $(".CSSTableGenerator").remove();
+
+            var header = ["artist_id", "id", "artist_name", "title"];
+
+            var songs = response["response"]["songs"];
+            var tableRows = new Array();
+            tableRows.push(header);
+            for (i = 0; i < songs.length; ++i) {
+                var row = new Array();
+                for (var s in songs[i]) {
+                    row.push(String(songs[i][s]));
+                }
+                tableRows.push(row);
+            }
+
+            var song_results = makeTable($(document.body), tableRows);
+
+        }
+    });
+}
+
+function retrieveSongs(data) {
+    jQuery.ajax({
+        dataType: "jsonp",
+        url: "http://developer.echonest.com/api/v4/song/search?format=jsonp",
+        data: data,
         success: function (response) {
             console.log(response);
 

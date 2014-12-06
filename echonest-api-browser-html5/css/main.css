@@ -302,3 +302,17 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+fieldset {
+     border: 0;
+ }
+label {
+    display: block;
+    margin: 30px 0 0 0;
+}
+select {
+    width: 200px;
+}
+.overflow {
+    height: 200px;
+}

@@ -27,6 +27,7 @@
         <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
             Key
         </p>
+        <button id="button_toogle_key">Toogle Key</button>
         <div class="attribute_selection.list">
             <form action="#">
                 <fieldset>
@@ -52,6 +53,7 @@
         <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
             Mode
         </p>
+        <button id="button_toogle_mode">Toogle Mode</button>
         <div class="attribute_selection.list">
             <form action="#">
                 <fieldset>
@@ -63,11 +65,11 @@
                 </fieldset>
             </form>
         </div>
-        <div id="slider_mode"></div>
+
         <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
             Tempo
         </p>
-
+        <button id="button_toogle_tempo">Toogle Mode</button>
         <p>
         <label for="label_tempo">Select tempo (BPM)</label>
         <input type="text" id="label_tempo" readonly style="border:0; color:#f6931f; font-weight:bold;">
@@ -77,6 +79,7 @@
         <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
             Energy
         </p>
+        <button id="button_toogle_energy">Toogle Energy</button>
         <label for="label_energy">Select tempo (BPM)</label>
         <input type="text" id="label_energy" readonly style="border:0; color:#f6931f; font-weight:bold;">
         <div id="slider_energy"></div>
@@ -84,6 +87,7 @@
         <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
             Danceability
         </p>
+        <button id="button_toogle_danceability">Toogle Danceability</button>
         <label for="label_danceability">Select tempo (BPM)</label>
         <input type="text" id="label_danceability" readonly style="border:0; color:#f6931f; font-weight:bold;">
         <div id="slider_danceability"></div>
@@ -91,6 +95,7 @@
         <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
             Acousticness
         </p>
+        <button id="button_toogle_acousticness">Toogle Acusticness</button>
         <label for="label_acousticness">Select tempo (BPM)</label>
         <input type="text" id="label_acousticness" readonly style="border:0; color:#f6931f; font-weight:bold;">
         <div id="slider_acousticness"></div>
@@ -98,14 +103,20 @@
         <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
             Speechiness
         </p>
+        <button id="button_toogle_speechiness">Toogle Speechiness</button>
         <label for="label_speechiness">Select tempo (BPM)</label>
         <input type="text" id="label_speechiness" readonly style="border:0; color:#f6931f; font-weight:bold;">
         <div id="slider_speechiness"></div>
 
-        <button id="search_song_button">Search Songs</button>
+        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+            Search
+        </p>
+        <button id="button_search_song">Search Songs</button>
+        
 
-        <h2>Results</h2>
-
+        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+            Results
+        </p>
 
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
