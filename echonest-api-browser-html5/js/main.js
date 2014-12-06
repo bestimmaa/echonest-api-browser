@@ -1,12 +1,19 @@
 // Read api key from echonest_api_key file
 var api_key;
 var musical_key = 0;
+var musical_key_enabled = false;
 var mode = 0;
+var mode_enabled = false;
 var tempo = 120;
+var tempo_enabled = false;
 var energy = 50;
+var energy_enabled = false;
 var danceability = 50;
+var danceability_enabled = false;
 var acousticness = 50;
+var acousticness_enabled = false;
 var speechiness = 50;
+var speechiness_enabled = false;
 
 
 
@@ -15,8 +22,85 @@ $(function () {
     apiKey();
 
     $("#button_search_song").click(function () {
-        data = {"results": 1, "artist": "Radiohead", "title": "Karma Police", "api_key": api_key};
+        data = {"results": 10, "api_key": api_key};
         retrieveSongs(data);
+    });
+
+    $("#button_toogle_key").click(function(){
+        if (musical_key_enabled){
+            $( "#attribute_controls_key" ).switchClass( "attribute_control_container", "attribute_control_container_hidden", 200 );
+            musical_key_enabled = false;
+        }
+        else{
+            $( "#attribute_controls_key" ).switchClass( "attribute_control_container_hidden", "attribute_control_container", 200 );
+            musical_key_enabled = true;
+        }
+    });
+
+    $("#button_toogle_mode").click(function(){
+        if (mode_enabled){
+            $( "#attribute_controls_mode" ).switchClass( "attribute_control_container", "attribute_control_container_hidden", 200 );
+            mode_enabled = false;
+        }
+        else{
+            $( "#attribute_controls_mode" ).switchClass( "attribute_control_container_hidden", "attribute_control_container", 200 );
+            mode_enabled = true;
+        }
+    });
+
+    $("#button_toogle_tempo").click(function(){
+        if (tempo_enabled){
+            $( "#attribute_controls_tempo" ).switchClass( "attribute_control_container", "attribute_control_container_hidden", 200 );
+            tempo_enabled = false;
+        }
+        else{
+            $( "#attribute_controls_tempo" ).switchClass( "attribute_control_container_hidden", "attribute_control_container", 200 );
+            tempo_enabled = true;
+        }
+    });
+
+    $("#button_toogle_energy").click(function(){
+        if (energy_enabled){
+            $( "#attribute_controls_energy" ).switchClass( "attribute_control_container", "attribute_control_container_hidden", 200 );
+            energy_enabled = false;
+        }
+        else{
+            $( "#attribute_controls_energy" ).switchClass( "attribute_control_container_hidden", "attribute_control_container", 200 );
+            energy_enabled = true;
+        }
+    });
+
+    $("#button_toogle_danceability").click(function(){
+        if (danceability_enabled){
+            $( "#attribute_controls_danceability" ).switchClass( "attribute_control_container", "attribute_control_container_hidden", 200 );
+            danceability_enabled = false;
+        }
+        else{
+            $( "#attribute_controls_danceability" ).switchClass( "attribute_control_container_hidden", "attribute_control_container", 200 );
+            danceability_enabled = true;
+        }
+    });
+
+    $("#button_toogle_acousticness").click(function(){
+        if (acousticness_enabled){
+            $( "#attribute_controls_acousticness" ).switchClass( "attribute_control_container", "attribute_control_container_hidden", 200 );
+            acousticness_enabled = false;
+        }
+        else{
+            $( "#attribute_controls_acousticness" ).switchClass( "attribute_control_container_hidden", "attribute_control_container", 200 );
+            acousticness_enabled = true;
+        }
+    });
+
+    $("#button_toogle_speechiness").click(function(){
+        if (speechiness_enabled){
+            $( "#attribute_controls_speechiness" ).switchClass( "attribute_control_container", "attribute_control_container_hidden", 200 );
+            speechiness_enabled = false;
+        }
+        else{
+            $( "#attribute_controls_speechiness" ).switchClass( "attribute_control_container_hidden", "attribute_control_container", 200 );
+            speechiness_enabled = true;
+        }
     });
 
     $("#key").selectmenu({

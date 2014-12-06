@@ -316,3 +316,19 @@ select {
 .overflow {
     height: 200px;
 }
+
+.attribute_control_container{
+    display: inline;
+}
+
+.attribute_control_container_hidden{
+    display: none;
+}
+
+.attribute_switch_enabled{
+
+}
+
+.attribute_switch_disabled{
+
+}
