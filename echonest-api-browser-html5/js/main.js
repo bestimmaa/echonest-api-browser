@@ -22,7 +22,7 @@ $(function () {
     apiKey();
 
     $("#button_search_song").click(function () {
-        data = {"results": 10, "api_key": api_key};
+        data = {"results": 10, "api_key": api_key, "limit":"yes"};
         if(musical_key_enabled) data["key"]=musical_key;
         if(mode_enabled) data["mode"]=mode;
         if(tempo_enabled){
@@ -231,7 +231,7 @@ function getExampleJSONP() {
 function retrieveSongs(data) {
     jQuery.ajax({
         dataType: "jsonp",
-        url: "http://developer.echonest.com/api/v4/song/search?format=jsonp",
+        url: "http://developer.echonest.com/api/v4/song/search?format=jsonp&bucket=id:spotify-WW&bucket=tracks",
         data: data,
         success: function (response) {
             console.log(response);
