@@ -18,11 +18,65 @@ $(function () {
         getExampleJSONP();
     });
 
-    $("#slider_tempo").slider();
-    $("#slider_energy").slider();
-    $("#slider_danceability").slider();
-    $("#slider_acousticness").slider();
-    $("#slider_speechiness").slider();
+    $("#slider_tempo").slider({
+        min: 50,
+        max: 500,
+        value: 120,
+        slide: function( event, ui ) {
+            tempo = ui.value;
+            $( "#label_tempo" ).val( ui.value );
+        }
+    });
+    $( "#label_tempo" ).val( $( "#slider_tempo").slider( "value" ) );
+
+    $("#slider_energy").slider({
+        min: 0,
+        max: 100,
+        value: 50,
+        slide: function( event, ui ) {
+            energy = ui.value;
+            $( "#label_energy" ).val( ui.value );
+        }
+    });
+    $( "#label_energy" ).val( $( "#slider_energy").slider( "value" ) );
+
+    $("#slider_danceability").slider({
+        min: 0,
+        max: 100,
+        value: 50,
+        slide: function( event, ui ) {
+            danceability = ui.value;
+            $( "#label_danceability" ).val( ui.value );
+        }
+    });
+    $( "#label_danceability" ).val( $( "#slider_danceability").slider( "value" ) );
+
+    $("#slider_acousticness").slider(
+        {
+            min: 0,
+            max: 100,
+            value: 50,
+            slide: function( event, ui ) {
+                acousticness = ui.value;
+                $( "#label_acousticness" ).val( ui.value );
+            }
+        }
+    );
+    $( "#label_acousticness" ).val( $( "#slider_acousticness").slider( "value" ) );
+
+    $("#slider_speechiness").slider(
+        {
+            min: 0,
+            max: 100,
+            value: 50,
+            slide: function( event, ui ) {
+                speechiness = ui.value;
+                $( "#label_speechiness" ).val( ui.value );
+            }
+        }
+    );
+    $( "#label_speechiness" ).val( $( "#slider_speechiness").slider( "value" ) );
+
 });
 
 
