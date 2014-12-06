@@ -15,9 +15,25 @@ var acousticness_enabled = false;
 var speechiness = 50;
 var speechiness_enabled = false;
 
-
+/**
+ * Taken from: http://stackoverflow.com/questions/11409895/whats-the-most-elegant-way-to-cap-a-number-to-a-segment
+ *
+ * Returns a number whose value is limited to the given range.
+ *
+ * Example: limit the output of this computation to between 0 and 255
+ * (x * 255).clamp(0, 255)
+ *
+ * @param {Number} min The lower boundary of the output range
+ * @param {Number} max The upper boundary of the output range
+ * @returns A number in the range [min, max]
+ * @type Number
+ */
+Number.prototype.clamp = function(min, max) {
+    return Math.min(Math.max(this, min), max);
+};
 
 $(function () {
+
     // read api key from file and store to global variable
     apiKey();
 
@@ -26,24 +42,24 @@ $(function () {
         if(musical_key_enabled) data["key"]=musical_key;
         if(mode_enabled) data["mode"]=mode;
         if(tempo_enabled){
-            data["min_tempo"] = tempo;
-            data["max_tempo"] = tempo;
+            data["min_tempo"] = (tempo - 1).clamp(0,500);
+            data["max_tempo"] = (tempo + 1).clamp(0,500);
         }
         if(energy_enabled){
-            data["min_energy"] = energy/100.0;
-            data["max_energy"] = energy/100.0;
+            data["min_energy"] = (energy/100.0 - 0.1).clamp(0.0,1.0);
+            data["max_energy"] = (energy/100.0 + 0.1).clamp(0.0,1.0);
         }
         if(danceability_enabled){
-            data["min_danceability"] = danceability/100.0;
-            data["max_danceability"] = danceability/100.0;
+            data["min_danceability"] = (danceability/100.0 - 0.1).clamp(0.0,1.0);
+            data["max_danceability"] = (danceability/100.0 + 0.1).clamp(0.0,1.0);
         }
         if(acousticness_enabled){
-            data["min_acousticness"] = acousticness/100.0;
-            data["max_acousticness"] = acousticness/100.0;
+            data["min_acousticness"] = (acousticness/100.0 - 0.1).clamp(0.0,1.0);
+            data["max_acousticness"] = (acousticness/100.0 + 0.1).clamp(0.0,1.0);
         }
         if(speechiness_enabled){
-            data["min_speechiness"] = speechiness/100.0;
-            data["max_speechiness"] = speechiness/100.0;
+            data["min_speechiness"] = (speechiness/100.0 - 0.1).clamp(0.0,1.0);
+            data["max_speechiness"] = (speechiness/100.0 + 0.1).clamp(0.0,1.0);
         }
         retrieveSongs(data);
     });
@@ -254,8 +270,9 @@ function retrieveSongs(data) {
                     }
                     if (s == "tracks"){
                         var spotify_id = songs[i][s][0]["foreign_id"];
-                        spotify_id = spotify_id.replace("spotify:track:","");
-                        row.push("http://open.spotify.com/track/"+spotify_id);
+                        //spotify_id = spotify_id.replace("spotify:track:","");
+                        //row.push("http://open.spotify.com/track/"+spotify_id);
+                        row.push(spotify_id);
                     }
                 }
                 tableRows.push(row);
