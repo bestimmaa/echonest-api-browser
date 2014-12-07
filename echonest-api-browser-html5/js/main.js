@@ -285,7 +285,7 @@ function retrieveSongs(data) {
 }
 
 function apiKey() {
-    jQuery.getJSON('echonest_api_key', function (data) {
+    jQuery.getJSON('config.json', function (data) {
         console.log("Found API Key: " + data.api_key);
         api_key = (String(data.api_key));
     });
