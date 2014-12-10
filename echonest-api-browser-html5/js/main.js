@@ -254,7 +254,9 @@ function retrieveSongs(data) {
 
             $(".CSSTableGenerator").remove();
 
-            var header = ["artist_name", "title", "spotify-uri"];
+            var header = ["artist_name", "title", "key",
+                "mode", "tempo", "energy", "danceability",
+                "acousticness", "speechiness", "spotify-uri"];
 
             var songs = response["response"]["songs"];
             var tableRows = new Array();
@@ -264,6 +266,14 @@ function retrieveSongs(data) {
                 var artist_name = "?";
                 var title = "?";
                 var spotify_id = "?";
+
+                var key = "?";
+                var mode = "?";
+                var tempo = "?";
+                var energy = "?";
+                var danceability = "?";
+                var acousticness = "?";
+                var speechiness = "?";
 
                 for (var s in songs[i]) {
                     if (s == "artist_name"){
@@ -275,9 +285,26 @@ function retrieveSongs(data) {
                     if (s == "tracks"){
                         spotify_id = songs[i][s][0]["foreign_id"];
                     }
+                    if (s == "audio_summary") {
+                        key = songs[i][s]["key"];
+                        mode = songs[i][s]["mode"];
+                        tempo = songs[i][s]["tempo"];
+                        energy = songs[i][s]["energy"];
+                        danceability = songs[i][s]["danceability"];
+                        acousticness = songs[i][s]["acousticness"];
+                        speechiness = songs[i][s]["speechiness"];
+                    }
                 }
+
                 row.push(artist_name);
                 row.push(title);
+                row.push(key);
+                row.push(mode);
+                row.push(tempo);
+                row.push(energy);
+                row.push(danceability);
+                row.push(speechiness);
+                row.push(acousticness);
                 row.push(spotify_id);
 
                 tableRows.push(row);
@@ -303,9 +330,9 @@ function makeTable(container, data) {
     $.each(data, function (rowIndex, r) {
         var row = $("<tr/>");
         $.each(r, function (colIndex, c) {
-            if (colIndex != 2) row.append($("<t" + (rowIndex == 0 ? "h" : "d") + "/>").text(c));
+            if (colIndex != 9) row.append($("<t" + (rowIndex == 0 ? "h" : "d") + "/>").text(c));
             // insert the entries from the third column as anchors
-            if (colIndex == 2 && rowIndex != 0) row.append($("<t" + (rowIndex == 0 ? "h" : "d") + "/>").append($("<a href='"+c+"'></a>").text(c)));
+            if (colIndex == 9 && rowIndex != 0) row.append($("<t" + (rowIndex == 0 ? "h" : "d") + "/>").append($("<a href='" + c + "'></a>").text(c)));
         });
         table.append(row);
     });
