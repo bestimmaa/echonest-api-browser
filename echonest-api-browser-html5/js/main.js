@@ -247,7 +247,7 @@ function getExampleJSONP() {
 function retrieveSongs(data) {
     jQuery.ajax({
         dataType: "jsonp",
-        url: "http://developer.echonest.com/api/v4/song/search?format=jsonp&bucket=id:spotify-WW&bucket=tracks",
+        url: "http://developer.echonest.com/api/v4/song/search?format=jsonp&bucket=id:spotify-WW&bucket=tracks&bucket=audio_summary",
         data: data,
         success: function (response) {
             console.log(response);
@@ -261,20 +261,25 @@ function retrieveSongs(data) {
             tableRows.push(header);
             for (i = 0; i < songs.length; ++i) {
                 var row = new Array();
+                var artist_name = "?";
+                var title = "?";
+                var spotify_id = "?";
+
                 for (var s in songs[i]) {
                     if (s == "artist_name"){
-                        row.push(String(songs[i][s]));
+                        artist_name = String(songs[i][s]);
                     }
                     if (s == "title"){
-                        row.push(String(songs[i][s]));
+                        title = String(songs[i][s]);
                     }
                     if (s == "tracks"){
-                        var spotify_id = songs[i][s][0]["foreign_id"];
-                        //spotify_id = spotify_id.replace("spotify:track:","");
-                        //row.push("http://open.spotify.com/track/"+spotify_id);
-                        row.push(spotify_id);
+                        spotify_id = songs[i][s][0]["foreign_id"];
                     }
                 }
+                row.push(artist_name);
+                row.push(title);
+                row.push(spotify_id);
+
                 tableRows.push(row);
             }
 
