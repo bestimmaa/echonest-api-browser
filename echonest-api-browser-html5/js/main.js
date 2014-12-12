@@ -14,6 +14,8 @@ var acousticness = 50;
 var acousticness_enabled = false;
 var speechiness = 50;
 var speechiness_enabled = false;
+var style = "Pop";
+var style_enabled = false;
 
 /**
  * Taken from: http://stackoverflow.com/questions/11409895/whats-the-most-elegant-way-to-cap-a-number-to-a-segment
@@ -62,6 +64,17 @@ $(function () {
             data["max_speechiness"] = (speechiness/100.0 + 0.1).clamp(0.0,1.0);
         }
         retrieveSongs(data);
+    });
+
+    $("#button_toogle_style").click(function () {
+        if (style_enabled) {
+            $("#attribute_controls_style").switchClass("attribute_control_container", "attribute_control_container_hidden", 200);
+            style_enabled = false;
+        }
+        else {
+            $("#attribute_controls_style").switchClass("attribute_control_container_hidden", "attribute_control_container", 200);
+            style_enabled = true;
+        }
     });
 
     $("#button_toogle_key").click(function(){
@@ -214,35 +227,6 @@ $(function () {
 
 });
 
-
-function getExampleJSONP() {
-    jQuery.ajax({
-        dataType: "jsonp",
-        url: "http://developer.echonest.com/api/v4/song/search?format=jsonp",
-        data: {"results": 1, "artist": "Radiohead", "title": "Karma Police", "api_key": api_key},
-        success: function (response) {
-            console.log(response);
-
-            $(".CSSTableGenerator").remove();
-
-            var header = ["artist_id", "id", "artist_name", "title"];
-
-            var songs = response["response"]["songs"];
-            var tableRows = new Array();
-            tableRows.push(header);
-            for (i = 0; i < songs.length; ++i) {
-                var row = new Array();
-                for (var s in songs[i]) {
-                    row.push(String(songs[i][s]));
-                }
-                tableRows.push(row);
-            }
-
-            var song_results = makeTable($(document.body), tableRows);
-
-        }
-    });
-}
 
 function retrieveSongs(data) {
     jQuery.ajax({
