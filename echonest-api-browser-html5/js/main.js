@@ -14,9 +14,12 @@ var acousticness = 50;
 var acousticness_enabled = false;
 var speechiness = 50;
 var speechiness_enabled = false;
-var style = "Pop";
+var style = "";
 var style_enabled = false;
-
+var artist_enabled = false;
+var title_enabled = false;
+var artist = "";
+var title = "";
 /**
  * Taken from: http://stackoverflow.com/questions/11409895/whats-the-most-elegant-way-to-cap-a-number-to-a-segment
  *
@@ -41,6 +44,7 @@ $(function () {
 
     $("#button_search_song").click(function () {
         data = {"results": 10, "api_key": api_key, "limit":"yes"};
+        if (style_enabled) data["style"] = style;
         if(musical_key_enabled) data["key"]=musical_key;
         if(mode_enabled) data["mode"]=mode;
         if(tempo_enabled){
@@ -63,19 +67,63 @@ $(function () {
             data["min_speechiness"] = (speechiness/100.0 - 0.1).clamp(0.0,1.0);
             data["max_speechiness"] = (speechiness/100.0 + 0.1).clamp(0.0,1.0);
         }
+        if (artist_enabled) {
+            data["artist"] = artist;
+        }
+        if (title_enabled) {
+            data["title"] = title;
+        }
         retrieveSongs(data);
+    });
+
+    $("#button_toogle_artist").click(function () {
+        if (artist_enabled) {
+            $("#attribute_controls_artist").switchClass("attribute_control_container", "attribute_control_container_hidden", 200);
+            artist_enabled = false;
+            artist = ""
+        }
+        else {
+            $("#attribute_controls_artist").switchClass("attribute_control_container_hidden", "attribute_control_container", 200);
+            artist_enabled = true;
+        }
+    });
+
+    $("#button_toogle_title").click(function () {
+        if (title_enabled) {
+            $("#attribute_controls_title").switchClass("attribute_control_container", "attribute_control_container_hidden", 200);
+            title_enabled = false;
+            title = ""
+        }
+        else {
+            $("#attribute_controls_title").switchClass("attribute_control_container_hidden", "attribute_control_container", 200);
+            title_enabled = true;
+        }
     });
 
     $("#button_toogle_style").click(function () {
         if (style_enabled) {
             $("#attribute_controls_style").switchClass("attribute_control_container", "attribute_control_container_hidden", 200);
             style_enabled = false;
+            style = ""
         }
         else {
             $("#attribute_controls_style").switchClass("attribute_control_container_hidden", "attribute_control_container", 200);
             style_enabled = true;
         }
     });
+
+    $("#style").on("input", function () {
+        style = String($("#style").val())
+    });
+
+    $("#artist").on("input", function () {
+        artist = String($("#artist").val())
+    });
+
+    $("#title").on("input", function () {
+        title = String($("#title").val())
+    });
+
 
     $("#button_toogle_key").click(function(){
         if (musical_key_enabled){
