@@ -99,7 +99,18 @@ textarea {
 
 
 
+div.query-container{
+    float: left;
+    width: 200px;
+    border: 1px dotted;
+    border-radius: 4px;
+    margin: 5px;
+    padding: 5px;
+}
 
+div.search-container{
+    clear: both;
+}
 
 
 

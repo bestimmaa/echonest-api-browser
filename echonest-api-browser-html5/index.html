@@ -1,182 +1,193 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="/js/vendor/jquery-ui-1.11.2.custom/jquery-ui.min.css">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/js/vendor/jquery-ui-1.11.2.custom/jquery-ui.min.css">
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
 
-        <!-- Add your site or application content here -->
-        <h1>Explore The Echo Nest Song Search API</h1>
+<!-- Add your site or application content here -->
+<h1>Explore The Echo Nest Song Search API</h1>
 
-        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
-            Artist
-        </p>
-        <button id="button_toogle_artist">Toggle Artist</button>
-        <div id="attribute_controls_artist" class="attribute_control_container_hidden">
-            <label for="style">Artist:</label>
-            <input type="text" name="name" id="artist" value="" data-clear-btn="true">
-        </div>
+<div class="query-container">
+    <button id="button_toogle_artist">Toggle Artist</button>
+    <div id="attribute_controls_artist" class="attribute_control_container_hidden">
+        <label for="style">Artist:</label>
+        <input type="text" name="name" id="artist" value="" data-clear-btn="true">
+    </div>
+</div>
 
-        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
-            Title
-        </p>
-        <button id="button_toogle_title">Toggle Title</button>
-        <div id="attribute_controls_title" class="attribute_control_container_hidden">
-            <label for="style">Title:</label>
-            <input type="text" name="name" id="title" value="" data-clear-btn="true">
-        </div>
+<div class="query-container">
+    <button id="button_toogle_title">Toggle Title</button>
+    <div id="attribute_controls_title" class="attribute_control_container_hidden">
+        <label for="style">Title:</label>
+        <input type="text" name="name" id="title" value="" data-clear-btn="true">
+    </div>
+</div>
 
+<div class="query-container">
+    <button id="button_toogle_style">Toggle Style</button>
+    <div id="attribute_controls_style" class="attribute_control_container_hidden">
+        <label for="style">Style Keyword:</label>
+        <input type="text" name="name" id="style" value="" data-clear-btn="true">
+    </div>
 
-        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
-        Style
-        </p>
-        <button id="button_toogle_style">Toggle Style</button>
-        <div id="attribute_controls_style" class="attribute_control_container_hidden">
-            <label for="style">Style Keyword:</label>
-            <input type="text" name="name" id="style" value="" data-clear-btn="true">
-        </div>
+</div>
 
-
-        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
-            Key
-        </p>
-        <button id="button_toogle_key">Toggle Key</button>
-        <div id="attribute_controls_key" class="attribute_control_container_hidden">
-            <form action="#">
-                <fieldset>
-                    <label for="key">Select key</label>
-                    <select name="key" id="key">
-                        <option>c</option>
-                        <option>c-sharp</option>
-                        <option>d</option>
-                        <option>e-flat</option>
-                        <option>e</option>
-                        <option>f</option>
-                        <option>f-sharp</option>
-                        <option>g</option>
-                        <option>a-flat</option>
-                        <option>a</option>
-                        <option>b-flat</option>
-                        <option>b</option>
-                    </select>
-                </fieldset>
-            </form>
-        </div>
-
-        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
-            Mode
-        </p>
-        <button id="button_toogle_mode">Toggle Mode</button>
-        <div id="attribute_controls_mode" class="attribute_control_container_hidden">
-            <form action="#">
-                <fieldset>
-                    <label for="mode">Select mode</label>
-                    <select name="mode" id="mode">
-                        <option>Major</option>
-                        <option>Minor</option>
-                    </select>
-                </fieldset>
-            </form>
-        </div>
-
-        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
-            Tempo
-        </p>
-        <button id="button_toogle_tempo">Toggle Tempo</button>
-        <div id="attribute_controls_tempo" class="attribute_control_container_hidden">
-            <label for="label_tempo">Select tempo (BPM)</label>
-            <input type="text" id="label_tempo" readonly style="border:0; color:#f6931f; font-weight:bold;">
-            <div id="slider_tempo"></div>
-        </div>
-
-        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
-            Energy
-        </p>
-        <button id="button_toogle_energy">Toggle Energy</button>
-        <div id="attribute_controls_energy" class="attribute_control_container_hidden">
-            <label for="label_energy">Set Energy (0 - 100)</label>
-            <input type="text" id="label_energy" readonly style="border:0; color:#f6931f; font-weight:bold;">
-            <div id="slider_energy"></div>
-        </div>
+<div class="query-container">
+    <button id="button_toogle_key">Toggle Key</button>
+    <div id="attribute_controls_key" class="attribute_control_container_hidden">
+        <form action="#">
+            <fieldset>
+                <label for="key">Select key</label>
+                <select name="key" id="key">
+                    <option>c</option>
+                    <option>c-sharp</option>
+                    <option>d</option>
+                    <option>e-flat</option>
+                    <option>e</option>
+                    <option>f</option>
+                    <option>f-sharp</option>
+                    <option>g</option>
+                    <option>a-flat</option>
+                    <option>a</option>
+                    <option>b-flat</option>
+                    <option>b</option>
+                </select>
+            </fieldset>
+        </form>
+    </div>
+</div>
 
 
-        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
-            Danceability
-        </p>
-        <button id="button_toogle_danceability">Toggle Danceability</button>
-        <div id="attribute_controls_danceability" class="attribute_control_container_hidden">
-            <label for="label_danceability">Set Danceability (0 - 100)</label>
-            <input type="text" id="label_danceability" readonly style="border:0; color:#f6931f; font-weight:bold;">
-            <div id="slider_danceability"></div>
-        </div>
+<div class="query-container">
+    <button id="button_toogle_mode">Toggle Mode</button>
+    <div id="attribute_controls_mode" class="attribute_control_container_hidden">
+        <form action="#">
+            <fieldset>
+                <label for="mode">Select mode</label>
+                <select name="mode" id="mode">
+                    <option>Major</option>
+                    <option>Minor</option>
+                </select>
+            </fieldset>
+        </form>
+    </div>
+
+</div>
+
+<div class="query-container">
+    <button id="button_toogle_tempo">Toggle Tempo</button>
+    <div id="attribute_controls_tempo" class="attribute_control_container_hidden">
+        <label for="label_tempo">Select tempo (BPM)</label>
+        <input type="text" id="label_tempo" readonly style="border:0; color:#f6931f; font-weight:bold;">
+
+        <div id="slider_tempo"></div>
+    </div>
+
+</div>
+
+<div class="query-container">
+    <button id="button_toogle_energy">Toggle Energy</button>
+    <div id="attribute_controls_energy" class="attribute_control_container_hidden">
+        <label for="label_energy">Set Energy (0 - 100)</label>
+        <input type="text" id="label_energy" readonly style="border:0; color:#f6931f; font-weight:bold;">
+
+        <div id="slider_energy"></div>
+    </div>
+
+</div>
+
+<div class="query-container">
+
+    <button id="button_toogle_danceability">Toggle Danceability</button>
+    <div id="attribute_controls_danceability" class="attribute_control_container_hidden">
+        <label for="label_danceability">Set Danceability (0 - 100)</label>
+        <input type="text" id="label_danceability" readonly style="border:0; color:#f6931f; font-weight:bold;">
+
+        <div id="slider_danceability"></div>
+    </div>
+
+</div>
+
+<div class="query-container">
+    <button id="button_toogle_acousticness">Toggle Acousticness</button>
+    <div id="attribute_controls_acousticness" class="attribute_control_container_hidden">
+        <label for="label_acousticness">Set Acousticness (0 - 100)</label>
+        <input type="text" id="label_acousticness" readonly style="border:0; color:#f6931f; font-weight:bold;">
+
+        <div id="slider_acousticness"></div>
+    </div>
+
+</div>
+
+<div class="query-container">
+    <button id="button_toogle_speechiness">Toggle Speechiness</button>
+    <div id="attribute_controls_speechiness" class="attribute_control_container_hidden">
+        <label for="label_speechiness">Set Speechiness (0 - 100)</label>
+        <input type="text" id="label_speechiness" readonly style="border:0; color:#f6931f; font-weight:bold;">
+
+        <div id="slider_speechiness"></div>
+    </div>
+</div>
+
+<div class="search-container">
+    <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+        Search
+    </p>
+    <button id="button_search_song">Search Songs</button>
+</div>
+
+<p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+    Results
+</p>
 
 
-        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
-            Acousticness
-        </p>
-        <button id="button_toogle_acousticness">Toggle Acousticness</button>
-        <div id="attribute_controls_acousticness" class="attribute_control_container_hidden">
-            <label for="label_acousticness">Set Acousticness (0 - 100)</label>
-            <input type="text" id="label_acousticness" readonly style="border:0; color:#f6931f; font-weight:bold;">
-            <div id="slider_acousticness"></div>
-        </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+<script src="/js/vendor/jquery-ui-1.11.2.custom/jquery-ui.min.js"></script>
+
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
 
 
-        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
-            Speechiness
-        </p>
-        <button id="button_toogle_speechiness">Toggle Speechiness</button>
-        <div id ="attribute_controls_speechiness" class="attribute_control_container_hidden">
-            <label for="label_speechiness">Set Speechiness (0 - 100)</label>
-            <input type="text" id="label_speechiness" readonly style="border:0; color:#f6931f; font-weight:bold;">
-            <div id="slider_speechiness"></div>
-        </div>
-
-
-        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
-            Search
-        </p>
-        <button id="button_search_song">Search Songs</button>
-
-
-        <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
-            Results
-        </p>
-
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script src="/js/vendor/jquery-ui-1.11.2.custom/jquery-ui.min.js"></script>
-
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
-    </body>
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+    (function (b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+                function () {
+                    (b[l].q = b[l].q || []).push(arguments)
+                });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = '//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+</script>
+</body>
 </html>
