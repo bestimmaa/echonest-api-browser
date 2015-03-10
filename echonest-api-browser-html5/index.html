@@ -30,7 +30,14 @@
 <!-- Add your site or application content here -->
 <h1>Explore The Echo Nest Song Search API</h1>
 
-<div class="query-container">
+<div id="active_search_attributes" class="clearfix">
+    <h3>Active search attributes</h3>
+</div>
+<div id="inactive_search_attributes" class="clearfix">
+    <h3>Inactive search attributes</h3>
+</div>
+
+<div id="artist-container" class="query-container">
     <button id="button_toogle_artist">Toggle Artist</button>
     <div id="attribute_controls_artist" class="attribute_control_container_hidden">
         <label for="style">Artist:</label>
@@ -38,7 +45,7 @@
     </div>
 </div>
 
-<div class="query-container">
+<div id="title-container" class="query-container">
     <button id="button_toogle_title">Toggle Title</button>
     <div id="attribute_controls_title" class="attribute_control_container_hidden">
         <label for="style">Title:</label>
@@ -46,7 +53,7 @@
     </div>
 </div>
 
-<div class="query-container">
+<div id="style-container" class="query-container">
     <button id="button_toogle_style">Toggle Style</button>
     <div id="attribute_controls_style" class="attribute_control_container_hidden">
         <label for="style">Style Keyword:</label>
@@ -55,7 +62,7 @@
 
 </div>
 
-<div class="query-container">
+<div id="key-container" class="query-container">
     <button id="button_toogle_key">Toggle Key</button>
     <div id="attribute_controls_key" class="attribute_control_container_hidden">
         <form action="#">
@@ -81,7 +88,7 @@
 </div>
 
 
-<div class="query-container">
+<div id="mode-container" class="query-container">
     <button id="button_toogle_mode">Toggle Mode</button>
     <div id="attribute_controls_mode" class="attribute_control_container_hidden">
         <form action="#">
@@ -97,7 +104,7 @@
 
 </div>
 
-<div class="query-container">
+<div id="tempo-container" class="query-container">
     <button id="button_toogle_tempo">Toggle Tempo</button>
     <div id="attribute_controls_tempo" class="attribute_control_container_hidden">
         <label for="label_tempo">Select tempo (BPM)</label>
@@ -108,7 +115,7 @@
 
 </div>
 
-<div class="query-container">
+<div id="energy-container" class="query-container">
     <button id="button_toogle_energy">Toggle Energy</button>
     <div id="attribute_controls_energy" class="attribute_control_container_hidden">
         <label for="label_energy">Set Energy (0 - 100)</label>
@@ -119,8 +126,7 @@
 
 </div>
 
-<div class="query-container">
-
+<div id="danceability-container" class="query-container">
     <button id="button_toogle_danceability">Toggle Danceability</button>
     <div id="attribute_controls_danceability" class="attribute_control_container_hidden">
         <label for="label_danceability">Set Danceability (0 - 100)</label>
@@ -131,7 +137,7 @@
 
 </div>
 
-<div class="query-container">
+<div id="acousticness-container" class="query-container">
     <button id="button_toogle_acousticness">Toggle Acousticness</button>
     <div id="attribute_controls_acousticness" class="attribute_control_container_hidden">
         <label for="label_acousticness">Set Acousticness (0 - 100)</label>
@@ -142,7 +148,7 @@
 
 </div>
 
-<div class="query-container">
+<div id="speechiness-container" class="query-container">
     <button id="button_toogle_speechiness">Toggle Speechiness</button>
     <div id="attribute_controls_speechiness" class="attribute_control_container_hidden">
         <label for="label_speechiness">Set Speechiness (0 - 100)</label>

@@ -77,39 +77,47 @@ $(function () {
     });
 
     $("#button_toogle_artist").click(function () {
+        var el = $("#artist-container").detach();
         if (artist_enabled) {
-            $("#attribute_controls_artist").switchClass("attribute_control_container", "attribute_control_container_hidden", 200);
             artist_enabled = false;
-            artist = ""
+            artist = "";
+            el.appendTo("#inactive_search_attributes");
         }
         else {
-            $("#attribute_controls_artist").switchClass("attribute_control_container_hidden", "attribute_control_container", 200);
             artist_enabled = true;
+            el.appendTo("#active_search_attributes");
         }
+        $("#attribute_controls_artist").toggleClass("attribute_control_container_hidden", !artist_enabled);
+
     });
 
     $("#button_toogle_title").click(function () {
+        var el = $("#title-container").detach();
         if (title_enabled) {
-            $("#attribute_controls_title").switchClass("attribute_control_container", "attribute_control_container_hidden", 200);
             title_enabled = false;
             title = ""
+            el.appendTo("#inactive_search_attributes");
         }
         else {
-            $("#attribute_controls_title").switchClass("attribute_control_container_hidden", "attribute_control_container", 200);
             title_enabled = true;
+            el.appendTo("#active_search_attributes");
         }
+        $("#attribute_controls_title").toggleClass("attribute_control_container_hidden", !title_enabled);
     });
 
+
     $("#button_toogle_style").click(function () {
+        var el = $("#style-container").detach();
         if (style_enabled) {
-            $("#attribute_controls_style").switchClass("attribute_control_container", "attribute_control_container_hidden", 200);
             style_enabled = false;
             style = ""
+            el.appendTo("#inactive_search_attributes");
         }
         else {
-            $("#attribute_controls_style").switchClass("attribute_control_container_hidden", "attribute_control_container", 200);
             style_enabled = true;
+            el.appendTo("#active_search_attributes");
         }
+        $("#attribute_controls_style").toggleClass("attribute_control_container_hidden", !style_enabled);
     });
 
     $("#style").on("input", function () {
@@ -126,80 +134,99 @@ $(function () {
 
 
     $("#button_toogle_key").click(function(){
+        var el = $("#key-container").detach();
         if (musical_key_enabled){
-            $( "#attribute_controls_key" ).switchClass( "attribute_control_container", "attribute_control_container_hidden", 200 );
             musical_key_enabled = false;
+            el.appendTo("#inactive_search_attributes");
         }
         else{
-            $( "#attribute_controls_key" ).switchClass( "attribute_control_container_hidden", "attribute_control_container", 200 );
             musical_key_enabled = true;
+            el.appendTo("#active_search_attributes");
         }
+        $("#attribute_controls_key").toggleClass("attribute_control_container_hidden", !musical_key_enabled);
     });
 
     $("#button_toogle_mode").click(function(){
+        var el = $("#mode-container").detach();
         if (mode_enabled){
-            $( "#attribute_controls_mode" ).switchClass( "attribute_control_container", "attribute_control_container_hidden", 200 );
             mode_enabled = false;
+            el.appendTo("#inactive_search_attributes");
         }
         else{
-            $( "#attribute_controls_mode" ).switchClass( "attribute_control_container_hidden", "attribute_control_container", 200 );
             mode_enabled = true;
+            el.appendTo("#active_search_attributes");
         }
+        $("#attribute_controls_mode").toggleClass("attribute_control_container_hidden", !mode_enabled);
     });
 
     $("#button_toogle_tempo").click(function(){
+        var el = $("#tempo-container").detach();
         if (tempo_enabled){
             $( "#attribute_controls_tempo" ).switchClass( "attribute_control_container", "attribute_control_container_hidden", 200 );
             tempo_enabled = false;
+            el.appendTo("#inactive_search_attributes");
+
         }
         else{
             $( "#attribute_controls_tempo" ).switchClass( "attribute_control_container_hidden", "attribute_control_container", 200 );
             tempo_enabled = true;
+            el.appendTo("#active_search_attributes");
         }
+        $("#attribute_controls_tempo").toggleClass("attribute_control_container_hidden", !tempo_enabled);
     });
 
     $("#button_toogle_energy").click(function(){
+        var el = $("#energy-container").detach();
         if (energy_enabled){
             $( "#attribute_controls_energy" ).switchClass( "attribute_control_container", "attribute_control_container_hidden", 200 );
             energy_enabled = false;
+            el.appendTo("#inactive_search_attributes");
         }
         else{
             $( "#attribute_controls_energy" ).switchClass( "attribute_control_container_hidden", "attribute_control_container", 200 );
             energy_enabled = true;
+            el.appendTo("#active_search_attributes");
         }
+        $("#attribute_controls_energy").toggleClass("attribute_control_container_hidden", !energy_enabled);
     });
 
     $("#button_toogle_danceability").click(function(){
+        var el = $("#danceability-container").detach();
         if (danceability_enabled){
-            $( "#attribute_controls_danceability" ).switchClass( "attribute_control_container", "attribute_control_container_hidden", 200 );
             danceability_enabled = false;
+            el.appendTo("#inactive_search_attributes");
         }
         else{
-            $( "#attribute_controls_danceability" ).switchClass( "attribute_control_container_hidden", "attribute_control_container", 200 );
             danceability_enabled = true;
+            el.appendTo("#active_search_attributes");
         }
+        $("#attribute_controls_danceability").toggleClass("attribute_control_container_hidden", !danceability_enabled);
     });
 
     $("#button_toogle_acousticness").click(function(){
+        var el = $("#acousticness-container").detach();
         if (acousticness_enabled){
-            $( "#attribute_controls_acousticness" ).switchClass( "attribute_control_container", "attribute_control_container_hidden", 200 );
             acousticness_enabled = false;
+            el.appendTo("#inactive_search_attributes");
         }
         else{
-            $( "#attribute_controls_acousticness" ).switchClass( "attribute_control_container_hidden", "attribute_control_container", 200 );
             acousticness_enabled = true;
+            el.appendTo("#active_search_attributes");
         }
+        $("#attribute_controls_acousticness").toggleClass("attribute_control_container_hidden", !acousticness_enabled);
     });
 
     $("#button_toogle_speechiness").click(function(){
+        var el = $("#speechiness-container").detach();
         if (speechiness_enabled){
-            $( "#attribute_controls_speechiness" ).switchClass( "attribute_control_container", "attribute_control_container_hidden", 200 );
             speechiness_enabled = false;
+            el.appendTo("#inactive_search_attributes");
         }
         else{
-            $( "#attribute_controls_speechiness" ).switchClass( "attribute_control_container_hidden", "attribute_control_container", 200 );
             speechiness_enabled = true;
+            el.appendTo("#active_search_attributes");
         }
+        $("#attribute_controls_speechiness").toggleClass("attribute_control_container_hidden", !speechiness_enabled);
     });
 
     $("#key").selectmenu({
@@ -335,8 +362,8 @@ function retrieveSongs(data) {
                 row.push(tempo);
                 row.push(energy);
                 row.push(danceability);
-                row.push(speechiness);
                 row.push(acousticness);
+                row.push(speechiness);
                 row.push(spotify_id);
 
                 tableRows.push(row);
